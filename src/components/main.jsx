@@ -18,11 +18,11 @@ function Main() {
         bullet={bullet}
       />
       <div className="form-outer">
-        <form>
+        <form method="post" action="/api/test">
           <div ref={slidePage} className="page slide-page">
             <div className="title">Enter JEE Main Rank</div>
             <div className="field">
-              <input type="text" placeholder="Rank"></input>
+              <input name="rank" type="text" placeholder="Rank"></input>
             </div>
             <div className="field">
               <button
@@ -44,7 +44,7 @@ function Main() {
             <div className="title">Gender</div>
 
             <div className="field">
-              <select>
+              <select name="gender">
                 <option>Male</option>
                 <option>Female</option>
                 <option>Other</option>
@@ -82,7 +82,7 @@ function Main() {
           <div className="page">
             <div className="title">Category</div>
             <div className="field">
-              <select>
+              <select name="category">
                 <option>General</option>
                 <option>OBC</option>
                 <option>SC</option>
@@ -123,44 +123,44 @@ function Main() {
           <div className="page">
             <div className="title">Domicile</div>
             <div className="field">
-              <select>
-                <option value="">Choose Domicile State</option>
-                <option value="129">Andaman Nicobar Islands</option>
-                <option value="100">Andhra Pradesh</option>
-                <option value="101">Arunachal Pradesh</option>
-                <option value="102">Assam</option>
-                <option value="103">Bihar</option>
-                <option value="134">Chandigarh</option>
-                <option value="104">Chhattisgarh</option>
-                <option value="136">Dadra And Nagar Haveli</option>
-                <option value="135">Daman &amp; Diu</option>
-                <option value="128">Delhi</option>
-                <option value="108">Goa</option>
-                <option value="109">Gujarat</option>
-                <option value="105">Haryana</option>
-                <option value="110">Himachal Pradesh</option>
-                <option value="111">Jammu and Kashmir</option>
-                <option value="112">Jharkhand</option>
-                <option value="106">Karnataka</option>
-                <option value="107">Kerala</option>
-                <option value="130">Lakshadweep</option>
-                <option value="113">Madhya Pradesh</option>
-                <option value="114">Maharashtra</option>
-                <option value="115">Manipur</option>
-                <option value="116">Meghalaya</option>
-                <option value="117">Mizoram</option>
-                <option value="118">Nagaland</option>
-                <option value="119">Orissa</option>
-                <option value="131">Pondicherry</option>
-                <option value="120">Punjab</option>
-                <option value="121">Rajasthan</option>
-                <option value="122">Sikkim</option>
-                <option value="123">Tamil Nadu</option>
-                <option value="413">Telangana</option>
-                <option value="124">Tripura</option>
-                <option value="126">Uttar Pradesh</option>
-                <option value="133">Uttarakhand</option>
-                <option value="127">West Bengal</option>
+              <select name="domicile-state">
+                <option>Choose Domicile State</option>
+                <option>Andaman Nicobar Islands</option>
+                <option>Andhra Pradesh</option>
+                <option>Arunachal Pradesh</option>
+                <option>Assam</option>
+                <option>Bihar</option>
+                <option>Chandigarh</option>
+                <option>Chhattisgarh</option>
+                <option>Dadra And Nagar Haveli</option>
+                <option>Daman &amp; Diu</option>
+                <option>Delhi</option>
+                <option>Goa</option>
+                <option>Gujarat</option>
+                <option>Haryana</option>
+                <option>Himachal Pradesh</option>
+                <option>Jammu and Kashmir</option>
+                <option>Jharkhand</option>
+                <option>Karnataka</option>
+                <option>Kerala</option>
+                <option>Lakshadweep</option>
+                <option>Madhya Pradesh</option>
+                <option>Maharashtra</option>
+                <option>Manipur</option>
+                <option>Meghalaya</option>
+                <option>Mizoram</option>
+                <option>Nagaland</option>
+                <option>Orissa</option>
+                <option>Pondicherry</option>
+                <option>Punjab</option>
+                <option>Rajasthan</option>
+                <option>Sikkim</option>
+                <option>Tamil Nadu</option>
+                <option>Telangana</option>
+                <option>Tripura</option>
+                <option>Uttar Pradesh</option>
+                <option>Uttarakhand</option>
+                <option>West Bengal</option>
               </select>
             </div>
             <div className="field btns">
@@ -177,7 +177,7 @@ function Main() {
               >
                 Previous
               </button>
-              <button className="submit">Submit</button>
+              <button type="submit" className="submit">Submit</button>
             </div>
           </div>
         </form>
