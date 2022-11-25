@@ -1,13 +1,45 @@
 import { useRef } from "react";
+import { NavLink, Link, Routes, Route, useNavigate } from "react-router-dom";
+import axios from "axios";
 import ProgressBar from "./progressBar";
 import "./main.css";
 
 function Main() {
+  const navigate = useNavigate();
   const slidePage = useRef(null);
   const progressText = useRef([]);
   const progressCheck = useRef([]);
   const bullet = useRef([]);
   let current = 1;
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const rank = event.target.rank.value;
+    const gender = event.target.gender.value;
+    const category = event.target.category.value;
+    const domicile_state = event.target.domicile_state.value;
+    try {
+      const res = await axios.post("/api/test", {
+        rank: rank,
+        gender: gender,
+        category: category,
+        domicile_state: domicile_state,
+      });
+      const { Rank, Gender, Category, Domicile_state } = res.data;
+      console.log(Rank, Gender, Category, Domicile_state);
+      navigate("/result", {
+        state: {
+          rank: Rank,
+          gender: Gender,
+          category: Category,
+          domicile_state: Domicile_state,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+      navigate("/");
+    }
+  };
 
   return (
     <div className="container">
@@ -18,7 +50,7 @@ function Main() {
         bullet={bullet}
       />
       <div className="form-outer">
-        <form method="post" action="/api/test">
+        <form onSubmit={handleSubmit}>
           <div ref={slidePage} className="page slide-page">
             <div className="title">Enter JEE Main Rank</div>
             <div className="field">
@@ -123,7 +155,7 @@ function Main() {
           <div className="page">
             <div className="title">Domicile</div>
             <div className="field">
-              <select name="domicile-state">
+              <select name="domicile_state">
                 <option>Choose Domicile State</option>
                 <option>Andaman Nicobar Islands</option>
                 <option>Andhra Pradesh</option>
@@ -177,7 +209,9 @@ function Main() {
               >
                 Previous
               </button>
-              <button type="submit" className="submit">Submit</button>
+              <button type="submit" className="submit">
+                Submit
+              </button>
             </div>
           </div>
         </form>
