@@ -54,7 +54,7 @@ function Main() {
           <div ref={slidePage} className="page slide-page">
             <div className="title">Enter JEE Main Rank</div>
             <div className="field">
-              <input name="rank" type="text" placeholder="Rank"></input>
+              <input name="rank" type="number" placeholder="Rank"></input>
             </div>
             <div className="field">
               <button

@@ -17,10 +17,6 @@ app.post("/api/test", (req, res) => {
   });
 });
 
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
-
 app.listen(5000, () => {
   console.log("Server started on port 5000");
 });
