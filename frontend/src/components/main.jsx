@@ -25,7 +25,7 @@ function Main() {
         category: category,
         domicile_state: domicile_state,
       });
-      const { Rank, Gender, Category, Domicile_state } = res.data;
+      const { Rank, Gender, Category, Domicile_state, Result } = res.data;
       console.log(Rank, Gender, Category, Domicile_state);
       navigate("/result", {
         state: {
@@ -33,6 +33,7 @@ function Main() {
           gender: Gender,
           category: Category,
           domicile_state: Domicile_state,
+          result:Result
         },
       });
     } catch (error) {
@@ -116,11 +117,15 @@ function Main() {
             <div className="field">
               <select name="category">
                 <option>General</option>
-                <option>OBC</option>
-                <option>SC</option>
-                <option>ST</option>
-                <option>PWD</option>
+                <option>General {"(PWD)"}</option>
                 <option>EWS</option>
+                <option>EWS {"(PWD)"}</option>
+                <option>OBC-NCL</option>
+                <option>OBC-NCL {"(PWD)"}</option>
+                <option>SC</option>
+                <option>SC {"(PWD)"}</option>
+                <option>ST</option>
+                <option>ST {"(PWD)"}</option>
               </select>
             </div>
             <div className="field btns">
