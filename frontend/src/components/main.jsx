@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { NavLink, Link, Routes, Route, useNavigate } from "react-router-dom";
 import axios from "axios";
-import ProgressBar from "./progressBar";
 import "./main.css";
+import ProgressBar from "./progressBar";
 
 function Main() {
   const navigate = useNavigate();
@@ -29,10 +29,6 @@ function Main() {
       console.log(Rank, Gender, Category, Domicile_state);
       navigate("/result", {
         state: {
-          rank: Rank,
-          gender: Gender,
-          category: Category,
-          domicile_state: Domicile_state,
           result:Result
         },
       });
@@ -74,13 +70,13 @@ function Main() {
             </div>
           </div>
           <div className="page">
-            <div className="title">Gender</div>
+            <div className="title">Seat Pool</div>
 
             <div className="field">
               <select name="gender">
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
+                <option>Gender Neutral</option>
+                <option>Female Only</option>
+                <option>Both</option>
               </select>
             </div>
             <div className="field btns">

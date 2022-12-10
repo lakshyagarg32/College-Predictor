@@ -38,10 +38,10 @@ a:hover {
   color: #fff;
 }
 
-::selection {
+/*::selection {
   color: #fff;
-  /* background: #d43f8d; */
-}
+  /* background: #d43f8d; 
+}*/
 .container {
   width: 370px;
   background: #fff;
