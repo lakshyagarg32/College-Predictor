@@ -29,7 +29,7 @@ app.post("/api/test", (req, res) => {
       ans.push(results[i]);
     } else if (
       gender == "Female Only" &&
-      results[i].gender=="Female Only" &&
+      results[i].gender!="Gender-Neutral" &&
       results[i].category == category &&
       Number(results[i].closing_rank) >= Number(rank) &&
       (results[i].quota == "OS" || results[i].state == domicile_state)
