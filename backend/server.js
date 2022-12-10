@@ -20,7 +20,7 @@ app.post("/api/test", (req, res) => {
   const domicile_state = req.body.domicile_state;
   for (let i = 0; i < results.length; i++) {
     if (
-      (gender == "Male" || gender == "Other") &&
+      gender == "Gender Neutral" &&
       results[i].gender == "Gender-Neutral" &&
       results[i].category == category &&
       Number(results[i].closing_rank) >= Number(rank) &&
@@ -28,11 +28,19 @@ app.post("/api/test", (req, res) => {
     ) {
       ans.push(results[i]);
     } else if (
-      gender == "Female" &&
+      gender == "Female Only" &&
+      results[i].gender=="Female Only" &&
       results[i].category == category &&
       Number(results[i].closing_rank) >= Number(rank) &&
       (results[i].quota == "OS" || results[i].state == domicile_state)
     ) {
+      ans.push(results[i]);
+    }else if(
+      gender == "Both" &&
+      results[i].category == category &&
+      Number(results[i].closing_rank) >= Number(rank) &&
+      (results[i].quota == "OS" || results[i].state == domicile_state)
+    ){
       ans.push(results[i]);
     }
   }

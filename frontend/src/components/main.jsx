@@ -70,13 +70,13 @@ function Main() {
             </div>
           </div>
           <div className="page">
-            <div className="title">Gender</div>
+            <div className="title">Seat Pool</div>
 
             <div className="field">
               <select name="gender">
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
+                <option>Gender Neutral</option>
+                <option>Female Only</option>
+                <option>Both</option>
               </select>
             </div>
             <div className="field btns">
