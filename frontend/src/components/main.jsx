@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { NavLink, Link, Routes, Route, useNavigate } from "react-router-dom";
 import axios from "axios";
-import ProgressBar from "./progressBar";
 import "./main.css";
+import ProgressBar from "./progressBar";
 
 function Main() {
   const navigate = useNavigate();
@@ -29,10 +29,6 @@ function Main() {
       console.log(Rank, Gender, Category, Domicile_state);
       navigate("/result", {
         state: {
-          rank: Rank,
-          gender: Gender,
-          category: Category,
-          domicile_state: Domicile_state,
           result:Result
         },
       });

@@ -1,13 +1,15 @@
 import { useLocation } from "react-router-dom";
+import Table from "./table/table";
+import "./result.css";
 
 function Result() {
   const { state } = useLocation();
-  const { rank, gender, category, domicile_state, result } = state; // Read values passed on state
+  const { result } = state; // Read values passed on state
   console.log(result);
   return (
-    <h1>
-      {rank} {gender} {category} {domicile_state}{" "}
-    </h1>
+    <div className="result">
+      <Table data={result} rowsPerPage={10} />
+    </div>
   );
 }
 
