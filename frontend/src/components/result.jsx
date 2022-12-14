@@ -23,6 +23,8 @@ function Result() {
     }
     const a = Array.from(temp);
     const b = Array.from(temp2);
+    a.sort();
+    b.sort();
     setAllBranches(a);
     setAllColleges(b);
   }, []);
