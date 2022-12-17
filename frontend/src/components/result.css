@@ -37,10 +37,3 @@ td {
   display: flex;
   justify-content: center;
 }
-select {
-  width: 50%;
-  overflow: auto;
-  padding-left: 10px;
-  font-size: 15px;
-  font-weight: 300;
-}
