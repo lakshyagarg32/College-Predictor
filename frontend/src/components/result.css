@@ -1,8 +1,11 @@
 .result {
-  margin-left: 2%;
-  margin-right: 2%;
+  margin: auto 2%;
 }
-
+@media screen and (max-width: 880px) {
+  .result {
+    margin: auto;
+  }
+}
 h1,
 p {
   font-family: Lato;
