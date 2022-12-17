@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useMemo, useState, useEffect } from "react";
+import Select from "react-select";
 import Pagination from "./table/Pagination";
 import "./result.css";
 
@@ -21,21 +22,43 @@ function Result() {
       temp.add(result[i].branch);
       temp2.add(result[i].institute);
     }
-    const a = Array.from(temp);
-    const b = Array.from(temp2);
-    a.sort();
-    b.sort();
-    setAllBranches(a);
-    setAllColleges(b);
+    setAllBranches(() => {
+      const a = [];
+      a.push({
+        label: "All Branches",
+        value: "All Branches",
+      });
+      temp.forEach((branch) => {
+        a.push({
+          label: branch,
+          value: branch,
+        });
+      });
+      return a;
+    });
+    setAllColleges(() => {
+      const a = [];
+      a.push({
+        label: "All Institutes",
+        value: "All Institutes",
+      });
+      temp2.forEach((clg) => {
+        a.push({
+          label: clg,
+          value: clg,
+        });
+      });
+      return a;
+    });
   }, []);
 
   useEffect(() => {
     const arr = [];
     for (let i = 0; i < result.length; i++) {
       if (
-        (result[i].branch == branchFilter || branchFilter == "All Branches") &&
-        (result[i].institute == collegeFilter ||
-          collegeFilter == "All Institutes")
+        (branchFilter == "All Branches" || branchFilter == result[i].branch) &&
+        (collegeFilter == "All Institutes" ||
+          collegeFilter == result[i].institute)
       ) {
         arr.push(result[i]);
       }
@@ -55,31 +78,45 @@ function Result() {
           <tr>
             <th>
               Institute<br></br>
-              <select
-                onChange={(i) => {
-                  setCollegeFilter(i.target.value);
-                  setCurrentPage(1);
+              <Select
+                styles={{
+                  menu: (baseStyles, state) => ({
+                    ...baseStyles,
+                    width: "31.25rem",
+                  }),
+                  container: (baseStyles, state) => ({
+                    ...baseStyles,
+                    width: "12.5rem",
+                  }),
                 }}
-              >
-                <option>All Institutes</option>
-                {allColleges.map((college) => {
-                  return <option key={college}>{college}</option>;
-                })}
-              </select>
+                placeholder="All Institutes"
+                options={allColleges}
+                onChange={(clg) => {
+                  setCurrentPage(1);
+                  setCollegeFilter(clg.label);
+                }}
+              />
             </th>
             <th>
               Academic Program Name<br></br>
-              <select
-                onChange={(i) => {
-                  setBranchFilter(i.target.value);
-                  setCurrentPage(1);
+              <Select
+                styles={{
+                  menu: (baseStyles, state) => ({
+                    ...baseStyles,
+                    width: "31.25rem",
+                  }),
+                  container: (baseStyles, state) => ({
+                    ...baseStyles,
+                    width: "12.5rem",
+                  }),
                 }}
-              >
-                <option>All Branches</option>
-                {allBranches.map((branch) => {
-                  return <option key={branch}>{branch}</option>;
-                })}
-              </select>
+                placeholder="All Branches"
+                options={allBranches}
+                onChange={(branch) => {
+                  setCurrentPage(1);
+                  setBranchFilter(branch.label);
+                }}
+              />
             </th>
             <th>Quota</th>
             <th>Seat Type</th>
